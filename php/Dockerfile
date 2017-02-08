@@ -67,7 +67,7 @@ RUN ln -s /usr/bin/php-config7 /usr/bin/php-config && \
     ln -s /usr/bin/phpize7 /usr/bin/phpize
 RUN git clone --single-branch git://github.com/phalcon/cphalcon
 RUN cd cphalcon/build && ./install
-RUN apk del alpine-sdk g++ pcre-dev \
+RUN apk del alpine-sdk g++ pcre-dev git \
             gcc autoconf make php$PHPV-dev && \
     rm -rf cphalcon
 
