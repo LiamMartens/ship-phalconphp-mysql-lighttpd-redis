@@ -8,12 +8,10 @@ RUN adduser -D mysql
 RUN apk update && apk upgrade
 
 # add packages
-RUN apk add --update --no-cache \
-    tzdata bash wget curl pwgen \
-    sudo nano htop perl
+RUN apk add tzdata bash wget curl pwgen sudo nano htop perl
 
 # add mysql
-RUN apk add --update --no-cache mysql mysql-client
+RUN apk add mysql mysql-client
 
 # purge and re-create /var/lib/mysql with appropriate ownership
 RUN mkdir -p /var/lib/mysql /run/mysqld && \

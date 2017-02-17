@@ -11,13 +11,11 @@ RUN adduser -D www-data
 RUN apk update && apk upgrade
 
 # add packages
-RUN apk add --update --no-cache \
-    tzdata bash wget curl pwgen \
-    sudo nano htop perl
+RUN apk add tzdata bash wget curl sudo nano htop perl
 
 # install php 7
 ENV PHPV=7
-RUN apk add --update --no-cache \
+RUN apk add \
     php$PHPV-mcrypt \
     php$PHPV-soap \
     php$PHPV-openssl \
@@ -59,8 +57,7 @@ RUN apk add --update --no-cache \
 
 
 # install phalcon
-RUN apk add --update --no-cache \
-    php$PHPV-dev make autoconf \
+RUN apk add php$PHPV-dev make autoconf \
     gcc pcre-dev git g++ alpine-sdk
 RUN ln -s /usr/bin/php-config7 /usr/bin/php-config && \
     ln -s /usr/bin/php7 /usr/bin/php && \
